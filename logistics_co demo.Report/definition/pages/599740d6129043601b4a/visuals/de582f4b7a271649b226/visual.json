@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "b18f7dc91c67e5d46637",
+  "name": "de582f4b7a271649b226",
   "position": {
-    "x": 964.79400749063677,
+    "x": 667.56554307116107,
     "y": 81.49812734082397,
-    "z": 3,
+    "z": 2,
     "height": 86.292134831460672,
     "width": 286.4419475655431,
-    "tabOrder": 3
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "card",
@@ -20,15 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures - Ocean"
+                      "Entity": "Measures - Air"
                     }
                   },
-                  "Property": "Containers Exceeding Free Days %"
+                  "Property": "Air Gross Profit"
                 }
               },
-              "queryRef": "Measures - Ocean.Containers Exceeding Free Days %",
-              "nativeQueryRef": "Containers Exceeding Free Days %",
-              "format": "0.00%;-0.00%;0.00%"
+              "queryRef": "Measures - Air.Air Gross Profit",
+              "nativeQueryRef": "Air Gross Profit"
             }
           ]
         }
@@ -40,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Measures - Ocean"
+                    "Entity": "Measures - Air"
                   }
                 },
-                "Property": "Containers Exceeding Free Days %"
+                "Property": "Air Gross Profit"
               }
             },
             "direction": "Descending"
@@ -108,7 +107,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Containers > Free Days %'"
+                  "Value": "'Air Gross Profit'"
                 }
               }
             }

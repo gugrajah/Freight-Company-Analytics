@@ -53,5 +53,3 @@ table Dim_Ports_Terminals
 			entityName: Dim_Ports_Terminals
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

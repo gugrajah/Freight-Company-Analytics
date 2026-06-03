@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "b18f7dc91c67e5d46637",
+  "name": "dcaeb4e16347aaed3e5d",
   "position": {
-    "x": 964.79400749063677,
-    "y": 81.49812734082397,
-    "z": 3,
-    "height": 86.292134831460672,
-    "width": 286.4419475655431,
-    "tabOrder": 3
+    "x": 65.476528793241528,
+    "y": 80.952799235280438,
+    "z": 0,
+    "height": 86.905210943756941,
+    "width": 286.90624434856744,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "card",
@@ -20,15 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures - Ocean"
+                      "Entity": "Measures - Air"
                     }
                   },
-                  "Property": "Containers Exceeding Free Days %"
+                  "Property": "Air Shipment Count"
                 }
               },
-              "queryRef": "Measures - Ocean.Containers Exceeding Free Days %",
-              "nativeQueryRef": "Containers Exceeding Free Days %",
-              "format": "0.00%;-0.00%;0.00%"
+              "queryRef": "Measures - Air.Air Shipment Count",
+              "nativeQueryRef": "Air Shipment Count"
             }
           ]
         }
@@ -40,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Measures - Ocean"
+                    "Entity": "Measures - Air"
                   }
                 },
-                "Property": "Containers Exceeding Free Days %"
+                "Property": "Air Shipment Count"
               }
             },
             "direction": "Descending"
@@ -108,7 +107,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Containers > Free Days %'"
+                  "Value": "'Air Shipment Count'"
                 }
               }
             }

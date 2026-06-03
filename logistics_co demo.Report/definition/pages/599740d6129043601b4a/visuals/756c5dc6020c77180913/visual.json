@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "b18f7dc91c67e5d46637",
+  "name": "756c5dc6020c77180913",
   "position": {
-    "x": 964.79400749063677,
+    "x": 367.94007490636704,
     "y": 81.49812734082397,
-    "z": 3,
+    "z": 1,
     "height": 86.292134831460672,
     "width": 286.4419475655431,
-    "tabOrder": 3
+    "tabOrder": 1
   },
   "visual": {
     "visualType": "card",
@@ -20,15 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Measures - Ocean"
+                      "Entity": "Measures - Air"
                     }
                   },
-                  "Property": "Containers Exceeding Free Days %"
+                  "Property": "Total Chargeable Weight"
                 }
               },
-              "queryRef": "Measures - Ocean.Containers Exceeding Free Days %",
-              "nativeQueryRef": "Containers Exceeding Free Days %",
-              "format": "0.00%;-0.00%;0.00%"
+              "queryRef": "Measures - Air.Total Chargeable Weight",
+              "nativeQueryRef": "Total Chargeable Weight"
             }
           ]
         }
@@ -40,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Measures - Ocean"
+                    "Entity": "Measures - Air"
                   }
                 },
-                "Property": "Containers Exceeding Free Days %"
+                "Property": "Total Chargeable Weight"
               }
             },
             "direction": "Descending"
@@ -60,6 +59,13 @@
               "expr": {
                 "Literal": {
                   "Value": "20D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -108,7 +114,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Containers > Free Days %'"
+                  "Value": "'Total Chargeable Weight (KG)'"
                 }
               }
             }

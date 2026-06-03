@@ -53,5 +53,3 @@ table Dim_Containers
 			entityName: Dim_Containers
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

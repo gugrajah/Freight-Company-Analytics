@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "4e9b998940aa4e3b253c",
+  "name": "da059d63730b05178a58",
   "position": {
     "x": 1015.7129201436433,
     "y": 10,
-    "z": 9,
+    "z": 4,
     "height": 47.619293667812023,
     "width": 264.28707985635674,
-    "tabOrder": 9
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Carriers"
+                      "Entity": "Dim_Airports"
                     }
                   },
-                  "Property": "CarrierName"
+                  "Property": "AirportName"
                 }
               },
-              "queryRef": "Dim_Carriers.CarrierName",
-              "nativeQueryRef": "CarrierName",
+              "queryRef": "Dim_Airports.AirportName",
+              "nativeQueryRef": "AirportName",
               "active": true
             }
           ]

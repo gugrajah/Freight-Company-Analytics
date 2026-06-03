@@ -152,5 +152,3 @@ table Fact_Ocean_Shipments
 			entityName: Fact_Ocean_Shipments
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

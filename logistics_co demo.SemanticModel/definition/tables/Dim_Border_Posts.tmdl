@@ -43,5 +43,3 @@ table Dim_Border_Posts
 			entityName: Dim_Border_Posts
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

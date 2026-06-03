@@ -43,5 +43,3 @@ table Dim_Carriers
 			entityName: Dim_Carriers
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

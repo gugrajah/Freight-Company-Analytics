@@ -54,5 +54,3 @@ table Dim_Routes_Corridors
 			entityName: Dim_Routes_Corridors
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

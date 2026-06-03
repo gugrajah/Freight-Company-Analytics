@@ -43,5 +43,3 @@ table Dim_Customers
 			entityName: Dim_Customers
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-

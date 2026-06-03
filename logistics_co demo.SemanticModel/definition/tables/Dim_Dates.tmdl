@@ -69,5 +69,3 @@ table Dim_Dates
 			entityName: Dim_Dates
 			expressionSource: 'DirectQuery to AS - demo_logistics'
 
-	annotation PBI_ResultType = Exception
-
