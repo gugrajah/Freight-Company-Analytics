@@ -1,0 +1,57 @@
+table Dim_Airports
+	lineageTag: 2daca500-50ac-481b-b34c-6d80abcfc7e0
+	sourceLineageTag: 9cbf80a7-c1ce-450f-855d-2f84554ae1d5
+
+	column AirportSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 8a6103cc-2945-4e1e-8518-63eea98a65f5
+		sourceLineageTag: 53a78f0d-bbf5-4ed1-8df7-93d6456afe91
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: AirportSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column IATACode
+		dataType: string
+		lineageTag: 0df97c2a-b3a8-4257-afd2-ec21c4e374e5
+		sourceLineageTag: 22b4cc4c-d2e4-4da2-ae25-a35201cfbb7f
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: IATACode
+
+		annotation SummarizationSetBy = User
+
+	column AirportName
+		dataType: string
+		lineageTag: 0908b356-870f-4578-9a83-641b832fcd68
+		sourceLineageTag: 4ff57405-b9c4-4959-b153-ffeda56b0e6a
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: AirportName
+
+		annotation SummarizationSetBy = User
+
+	column Country
+		dataType: string
+		lineageTag: 9a065f4c-7ab6-47f2-8e00-bf6fed338606
+		sourceLineageTag: 0dcfb76c-008a-40ed-b727-aa540dbd3bba
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Airports = entity
+		mode: directQuery
+		source
+			entityName: Dim_Airports
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

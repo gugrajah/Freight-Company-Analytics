@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <!-- Drop Shadow Filter for visual container cards -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.05" />
+    </filter>
+    
+    <!-- Linear Gradient for Header Accent -->
+    <linearGradient id="headerAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#007ACC" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. Report Background (Slate Canvas) -->
+  <rect width="1280" height="720" fill="#F8FAFC" />
+
+  <!-- 2. Header Banner (Rhenus Navy) -->
+  <rect x="0" y="0" width="1280" height="60" fill="#002F6C" />
+  
+  <!-- 3. Header Accent Bar -->
+  <rect x="0" y="58" width="1280" height="2" fill="url(#headerAccent)" />
+
+  <!-- 4. Left Sidebar Background (Collapsed State - Rhenus Navy) -->
+  <rect x="0" y="60" width="50" height="660" fill="#002F6C" />
+  
+  <!-- 5. Vertical Navigation Separator Line -->
+  <line x1="50" y1="60" x2="50" y2="720" stroke="#001F4C" stroke-width="1" />
+
+  <!-- ================================================================= -->
+  <!-- 6. ROW 1: KPI CARDS (Y: 80 - 170, Height: 90) -->
+  <!-- ================================================================= -->
+  <!-- KPI Card 1: Total Shipments -->
+  <rect x="70" y="80" width="280" height="90" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+  
+  <!-- KPI Card 2: Total Logistics Cost -->
+  <rect x="370" y="80" width="280" height="90" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+  
+  <!-- KPI Card 3: Total Logistics Revenue -->
+  <rect x="670" y="80" width="280" height="90" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+  
+  <!-- KPI Card 4: Overall Gross Margin % -->
+  <rect x="970" y="80" width="280" height="90" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- ================================================================= -->
+  <!-- 7. ROW 2: MIDDLE CHARTS (Y: 190 - 430, Height: 240) -->
+  <!-- ================================================================= -->
+  <!-- Visual 1: Monthly Cost vs Revenue Trends (Combo Chart Container) -->
+  <rect x="70" y="190" width="730" height="240" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+  
+  <!-- Visual 2: Shipment Volume Share by Mode (Donut Chart Container) -->
+  <rect x="820" y="190" width="430" height="240" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- ================================================================= -->
+  <!-- 8. ROW 3: BOTTOM CHARTS (Y: 450 - 700, Height: 250) -->
+  <!-- ================================================================= -->
+  <!-- Visual 3: Top Customers by Profit (Bar Chart Container) -->
+  <rect x="70" y="450" width="580" height="250" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+  
+  <!-- Visual 4: Multi-Modal Performance Summary (Table Grid Container) -->
+  <rect x="670" y="450" width="580" height="250" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)" />
+</svg>

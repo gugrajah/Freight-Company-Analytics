@@ -1,0 +1,47 @@
+table Dim_Customers
+	lineageTag: 28d8331d-fb1e-43cd-86b4-893a762770e0
+	sourceLineageTag: 3653869c-1c40-46d9-a6a0-bd25d19b7956
+
+	column CustomerSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 3421b199-53a7-4f09-a25f-a8ce4556545f
+		sourceLineageTag: c681d4a0-6767-48c4-a92f-f975c347a55c
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CustomerSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column CustomerName
+		dataType: string
+		lineageTag: b8e22ae3-c568-4f3b-8284-0a099b568d08
+		sourceLineageTag: 01dd95dd-2754-4c6a-9f9a-2d8c2118b065
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = User
+
+	column IndustryVertical
+		dataType: string
+		lineageTag: bc3cf85e-8824-431c-a45d-f5ad34579497
+		sourceLineageTag: e6f8c8a2-6bd2-48ab-aeba-4dc87c588f70
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: IndustryVertical
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Customers = entity
+		mode: directQuery
+		source
+			entityName: Dim_Customers
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,159 @@
+table 'Measures - Ocean'
+	lineageTag: 17e9ab3a-68d4-4e7b-aefc-40b3073d67a0
+
+	measure 'Total Demurrage Cost' =
+			
+			SUM( Fact_Ocean_Shipments[DemurrageCost] )
+			
+			// Description: Container demurrage penalties incurred when containers dwell beyond free days at port terminals.
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 3c419e71-7939-4c5f-a097-2c8126e289a2
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Total Detention Cost' =
+			
+			SUM(Fact_Ocean_Shipments[DetentionCost])
+			
+			// Container detention penalties incurred when containers are returned late after gate-out.
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: ff5d3b00-6c44-43fe-b594-3feb34a0f9a7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Total D&D Cost' =
+			
+			[Total Demurrage Cost] + [Total Detention Cost]
+			
+			// Combined demurrage and detention costs - the total penalty exposure from port and container delays
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 0248a65d-bc9d-4fe8-9676-59a1a0ddd216
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Avg Dwell Days' =
+			
+			VAR SelectedModes = VALUES( Dim_Carriers[ModeOfTransport] )
+			RETURN
+			    IF(
+			        "Ocean" IN SelectedModes,
+			        AVERAGE( Fact_Ocean_Shipments[ActualDwellDays] ),
+			        BLANK()
+			    )
+			
+			
+			// Average number of days containers dwell at port terminals across all ocean shipments.
+		formatString: 0.0
+		lineageTag: d312f6a0-2691-4b03-99ac-250260e53919
+
+	measure 'Containers Exceeding Free Days %' = ```
+			
+			VAR TotalContainers = COUNTROWS( Fact_Ocean_Shipments )
+			VAR ExceededContainers = 
+			    CALCULATE(
+			        COUNTROWS( Fact_Ocean_Shipments ),
+			        Fact_Ocean_Shipments[ActualDwellDays] > Fact_Ocean_Shipments[FreeDaysAllowed]
+			    )
+			RETURN
+			    DIVIDE( ExceededContainers, TotalContainers, 0 )
+			
+			// Percentage of ocean shipments where the actual dwell time exceeded the carrier's free-day allowance, triggering demurrage charges.
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 807ddf7f-c9cc-4741-bd91-edae30f24935
+
+	measure 'Demurrage Per Container' =
+			
+			DIVIDE(
+			    [Total Demurrage Cost],
+			    COUNTROWS(Fact_Ocean_Shipments),
+			    0
+			)
+			
+			// Average demurrage cost per ocean shipment — useful for benchmarking per-container penalty exposure.
+		formatString: "R"#,0.00;-"R"#,0.00;"R"#,0.00
+		lineageTag: 0654ad06-5376-4d24-a5ed-f9d9b22a0074
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Ocean Shipment Count' =
+			
+			COUNTROWS(Fact_Ocean_Shipments)
+			
+			// Total count of ocean freight shipment transactions in the current filter context.
+		formatString: 0
+		lineageTag: 42985147-0a5f-4986-b5ab-7b3fd957338f
+
+	measure 'Tiered Demurrage Rate' = ```
+			
+			VAR ExcessDays = 
+			    SUMX(
+			        Fact_Ocean_Shipments, 
+			        MAX(Fact_Ocean_Shipments[ActualDwellDays] - Fact_Ocean_Shipments[FreeDaysAllowed], 0)
+			    )
+			RETURN
+			    DIVIDE([Total Demurrage Cost], ExcessDays, 0)
+			
+			/* Effective daily demurrage rate calculated as total demurrage cost divided by total excess days beyond the free-day allowance. Benchmark against the R1,650/day contractual rate. */
+			```
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 72a70ed4-3c41-4a53-9038-1911e9c8596e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Port Congestion Rate %' = ```
+			
+			VAR TotalShipments = COUNTROWS(Fact_Ocean_Shipments)
+			VAR CongestedShipments = 
+			    CALCULATE(
+			        COUNTROWS(Fact_Ocean_Shipments), 
+			        Fact_Ocean_Shipments[ActualDwellDays] > 10
+			    )
+			RETURN
+			    DIVIDE(CongestedShipments, TotalShipments, 0)
+			
+			/* Percentage of ocean shipments experiencing significant port congestion (dwell time exceeding 10 days). This threshold isolates systemic congestion backlogs, particularly at the Port of Durban. */
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8ca3f9bc-1a74-4ddb-95ef-71c1ea781599
+
+	measure 'Avg Excess Dwell Days' = ```
+			
+			AVERAGEX(
+			    FILTER(
+			        Fact_Ocean_Shipments,
+			        Fact_Ocean_Shipments[ActualDwellDays] > Fact_Ocean_Shipments[FreeDaysAllowed]
+			    ), 
+			    Fact_Ocean_Shipments[ActualDwellDays] - Fact_Ocean_Shipments[FreeDaysAllowed]
+			)
+			
+			/* Average number of days containers dwell beyond the free-day allowance (only for shipments that exceeded it). Measures the severity of delays, not just frequency. */
+			```
+		lineageTag: eba7c9f4-1a0f-44a9-bc10-a61a78a6c53b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Containers Exceeding Free Days Color' = ```
+			
+			IF (
+			    [Containers Exceeding Free Days %] > 0.50,
+			    "#EF4444",          // Rhenus Warning Red
+			    "#002F6C"           // Rhenus Navy (default)
+			)
+			
+			```
+		lineageTag: 6742a0b3-9358-4eeb-89a6-2a53d50131d6
+
+	partition 'Measures - Ocean' = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				  #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

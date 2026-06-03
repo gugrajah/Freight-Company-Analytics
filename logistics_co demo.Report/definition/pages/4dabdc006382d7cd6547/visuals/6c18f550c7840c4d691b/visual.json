@@ -1,0 +1,148 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "6c18f550c7840c4d691b",
+  "position": {
+    "x": 822.62329811145275,
+    "y": 185.71524530446689,
+    "z": 5,
+    "height": 248.81080941431782,
+    "width": 428.57364301030822,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Carriers"
+                    }
+                  },
+                  "Property": "CarrierName"
+                }
+              },
+              "queryRef": "Dim_Carriers.CarrierName",
+              "nativeQueryRef": "CarrierName",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures - Ocean"
+                    }
+                  },
+                  "Property": "Total Demurrage Cost"
+                }
+              },
+              "queryRef": "Measures - Ocean.Total Demurrage Cost",
+              "nativeQueryRef": "Total Demurrage Cost"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures - Ocean"
+                    }
+                  },
+                  "Property": "Ocean Shipment Count"
+                }
+              },
+              "queryRef": "Measures - Ocean.Ocean Shipment Count",
+              "nativeQueryRef": "Ocean Shipment Count",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures - Ocean"
+                    }
+                  },
+                  "Property": "Demurrage Per Container"
+                }
+              },
+              "queryRef": "Measures - Ocean.Demurrage Per Container",
+              "nativeQueryRef": "Demurrage Per Container"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Demurrage vs Free Days Allowed'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,47 @@
+table Dim_Carriers
+	lineageTag: 56d5d061-9dd9-44a3-b0d9-74eaf16da3aa
+	sourceLineageTag: 8156db24-0832-45ee-acaa-c5d5d0f60e2f
+
+	column CarrierSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 52f427e5-e7bd-4c7f-904a-f3f508dfa25d
+		sourceLineageTag: 053ca09d-c515-48fe-bf40-fceda381fafd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CarrierSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column CarrierName
+		dataType: string
+		lineageTag: f5758885-e1e5-4dfe-b9c7-fa87651c7de4
+		sourceLineageTag: bb26ce09-48ea-4d85-a23c-d19040a4a2a9
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CarrierName
+
+		annotation SummarizationSetBy = User
+
+	column ModeOfTransport
+		dataType: string
+		lineageTag: 4b325030-c478-4f17-88e3-5d679974afcb
+		sourceLineageTag: 4829f600-ba94-467d-8ce8-a9220d211797
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: ModeOfTransport
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Carriers = entity
+		mode: directQuery
+		source
+			entityName: Dim_Carriers
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

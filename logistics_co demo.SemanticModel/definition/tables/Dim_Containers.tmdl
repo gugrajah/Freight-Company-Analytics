@@ -1,0 +1,57 @@
+table Dim_Containers
+	lineageTag: 109c9bc8-7ff2-403c-96fd-e97c4bfb7528
+	sourceLineageTag: 4e52f9d5-c34a-45fb-b250-1112f8b17459
+
+	column ContainerSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 73989341-801c-4622-af3f-e7990a2bcf7e
+		sourceLineageTag: 6c3f7959-66af-423e-a821-15131accad5d
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: ContainerSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column ContainerNumber
+		dataType: string
+		lineageTag: bd19564f-3764-4ae3-8133-338e739b038e
+		sourceLineageTag: bc4ac765-7df2-4bdf-a8d5-21823188faee
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: ContainerNumber
+
+		annotation SummarizationSetBy = User
+
+	column ISOSizeCode
+		dataType: string
+		lineageTag: eb9a3931-c012-4669-9983-4430b4015935
+		sourceLineageTag: 8bd76e29-86d5-4058-a073-35ada952cdc6
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: ISOSizeCode
+
+		annotation SummarizationSetBy = User
+
+	column ContainerType
+		dataType: string
+		lineageTag: f55ce5fd-a3cd-4f59-be9b-c994825fa065
+		sourceLineageTag: 23e77b5e-83f5-4054-b8e0-fd2cf8004dcb
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: ContainerType
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Containers = entity
+		mode: directQuery
+		source
+			entityName: Dim_Containers
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

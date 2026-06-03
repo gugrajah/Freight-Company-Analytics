@@ -1,0 +1,73 @@
+table Dim_Dates
+	lineageTag: 409af82d-7e2a-4a08-acf8-4b595947e7e0
+	sourceLineageTag: ee063cb6-70b7-4298-80ba-7587ee7f31e6
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 5de862c4-783c-49b5-acf4-7cb89f033186
+		sourceLineageTag: de9681cb-c904-432a-82c2-f9c00a9450a0
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column CalendarDate
+		dataType: dateTime
+		isKey
+		isNullable: false
+		formatString: General Number
+		lineageTag: f4f39ae9-cb34-406f-995d-fcd0112444ee
+		sourceLineageTag: ab4b14d6-00da-46be-8101-a3adb9c48a6f
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CalendarDate
+
+		annotation SummarizationSetBy = User
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		lineageTag: beb8bab6-75e1-420e-a147-fe0cf2f63f57
+		sourceLineageTag: a9e5aa1c-8977-4cd8-819b-0acb75d12b23
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = User
+
+	column CalendarMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 29a5f81a-0ccb-4454-822c-748b0a88d38a
+		sourceLineageTag: d0b03383-506b-4bf4-8f4d-eb1172e962b1
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: CalendarMonth
+
+		annotation SummarizationSetBy = User
+
+	column MonthName
+		dataType: string
+		lineageTag: 9999ca99-4e14-4104-bf88-941b593bb804
+		sourceLineageTag: 66accc43-605e-4942-a4a6-f749559c4bab
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Dates = entity
+		mode: directQuery
+		source
+			entityName: Dim_Dates
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

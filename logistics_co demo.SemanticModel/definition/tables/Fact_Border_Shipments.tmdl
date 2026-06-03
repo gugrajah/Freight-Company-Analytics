@@ -1,0 +1,145 @@
+table Fact_Border_Shipments
+	lineageTag: 56326aff-6c36-44ea-b851-86a8daaa2f65
+	sourceLineageTag: 6bb806e7-7ea8-41e0-b277-0f89b75921ee
+
+	column BorderShipmentID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bae0b11-4701-4e38-a7af-3d4ac6a5d337
+		sourceLineageTag: d86d0ac7-9dc3-4ae5-9f4e-2fe7874ad264
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: BorderShipmentID
+
+		annotation SummarizationSetBy = User
+
+	column BorderPostSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c2740f54-12e9-4074-af58-5dfb4fc21211
+		sourceLineageTag: 267876b4-b25e-498d-8886-8fda79d4742a
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: BorderPostSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column VehicleSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 425a0822-62bb-4858-a416-807326c3d6a7
+		sourceLineageTag: 22786bac-cfa0-48ed-be9d-eb9ff96a76cd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: VehicleSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column RouteSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 50d0fc22-cb73-4af3-a331-8b126b26c63b
+		sourceLineageTag: 8a6227b9-e2f7-4755-85c1-e4d8163b2143
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: RouteSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column DispatchDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cc127ec7-2193-4c94-946a-5f6ee7da12be
+		sourceLineageTag: 382d5a3b-0c9b-4808-90a3-691a48ad5f44
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: DispatchDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column ScheduledArrivalDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: c8ac7851-9681-4cbc-826e-69b131d097a5
+		sourceLineageTag: 87a65795-3c0a-460e-b12d-d304093ec401
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: ScheduledArrivalDateKey
+
+		annotation SummarizationSetBy = User
+
+	column ActualArrivalDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b2dc842-b989-4469-bcd7-516e66ca85a1
+		sourceLineageTag: d865cd63-67d9-43a7-a45a-477af385e6a5
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: ActualArrivalDateKey
+
+		annotation SummarizationSetBy = User
+
+	column BorderDwellHours
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: f54e3969-387b-452e-945c-2e0670726d5b
+		sourceLineageTag: 337b57da-cba9-4674-894a-e52d5674d104
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: BorderDwellHours
+
+		annotation SummarizationSetBy = User
+
+	column LineHaulDrivingHours
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 9998f984-5956-4b94-9ca6-ed65df37fb37
+		sourceLineageTag: 47835fef-dcfa-4ace-98ce-d26a4e2542a5
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: LineHaulDrivingHours
+
+		annotation SummarizationSetBy = User
+
+	column TotalTransitHours
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: f4b0de51-4800-4c0a-b5c4-ef363e0ef4e9
+		sourceLineageTag: 7fa41ec4-76fe-4567-81c0-b10272bb53d1
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: TotalTransitHours
+
+		annotation SummarizationSetBy = User
+
+	column TargetTransitHours
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 521c1a27-a006-41b7-9e7d-8489987c727b
+		sourceLineageTag: e0270f6d-00bc-4208-91d5-72771c64f4a8
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: TargetTransitHours
+
+		annotation SummarizationSetBy = User
+
+	partition Fact_Border_Shipments = entity
+		mode: directQuery
+		source
+			entityName: Fact_Border_Shipments
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,141 @@
+table 'Measures - Border'
+	lineageTag: e8dfd5bf-32be-47c7-8f68-c5ffd1dd13fa
+
+	measure 'Border Shipment Count' =
+			
+			COUNTROWS(Fact_Border_Shipments)
+			
+			// Total count of cross-border road freight shipment transactions in the current filter context.
+		formatString: 0
+		lineageTag: d9864daf-495c-4e46-aeae-86c479400ad2
+
+	measure 'On-Time Delivery %' = ```
+			
+			VAR SelectedModes = VALUES( Dim_Carriers[ModeOfTransport] )
+			RETURN
+			    IF(
+			        "Road" IN SelectedModes,
+			        VAR TotalShipments = COUNTROWS( Fact_Border_Shipments )
+			        VAR OnTimeShipments = 
+			            CALCULATE(
+			                COUNTROWS( Fact_Border_Shipments ),
+			                Fact_Border_Shipments[TotalTransitHours] <= ( Fact_Border_Shipments[TargetTransitHours] + 0.5 )
+			            )
+			        RETURN
+			            DIVIDE( OnTimeShipments, TotalShipments, 0 ),
+			        BLANK()
+			    )
+			
+			
+			// Percentage of shipments delivered within the target transit time plus a 30-minute (0.5 hour) schedule buffer. Corporate target is 95%.
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1fd3c1b8-3dab-4615-81f9-e3aa8cafacf6
+
+	measure 'OTD vs Target Gap' =
+			
+			[On-Time Delivery %] - 0.95
+			
+			// Variance between actual On-Time Delivery % and the corporate 95% OTD target. Positive = above target, Negative = below target.
+		formatString: +0.0%;-0.0%
+		lineageTag: c9361921-68b7-41f4-9825-8f76b73a9de9
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Avg Border Dwell Hours' =
+			
+			AVERAGE(Fact_Border_Shipments[BorderDwellHours])
+			
+			// Average time spent at border posts/customs clearance. Isolates the customs processing bottleneck from line-haul driving time.
+		formatString: 0.0 hrs
+		lineageTag: 2f4ab268-a367-49d9-b9e2-bbc3f145776e
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Avg Line Haul Hours' =
+			
+			AVERAGE(Fact_Border_Shipments[LineHaulDrivingHours])
+			
+			// Average pure driving/line-haul time excluding border and road delays.
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 03f479a3-ce9f-40d8-8559-4b43c256cc6d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Avg Total Transit Hours' =
+			
+			AVERAGE(Fact_Border_Shipments[TotalTransitHours])
+			
+			// Average total door-to-door transit time including driving, border dwell, and road delays.
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 1b2eba14-58f5-477e-b8c0-01a66c90bc03
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Transit Time Variance (Hours)' =
+			
+			AVERAGEX(
+			    Fact_Border_Shipments,
+			    Fact_Border_Shipments[TotalTransitHours] - Fact_Border_Shipments[TargetTransitHours]
+			)
+			
+			// Average variance between actual total transit and target transit time. Positive = slower than target (delays), Negative = faster than target.
+		formatString: +0.0;-0.0 hrs
+		lineageTag: d7c47928-f345-4492-af21-687e94edb1cf
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Transit Time Variance %' =
+			
+			AVERAGEX(
+			    Fact_Border_Shipments,
+			    DIVIDE(
+			        Fact_Border_Shipments[TotalTransitHours] - Fact_Border_Shipments[TargetTransitHours],
+			        Fact_Border_Shipments[TargetTransitHours],
+			        0
+			    )
+			)
+			
+			// Average transit time variance expressed as a percentage of target transit hours. Isolates the proportional impact of delays relative to planned journey times.
+		formatString: +0.0%;-0.0%
+		lineageTag: 4209d66e-5164-431a-a179-864aadfca565
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Late Delivery Count' = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fact_Border_Shipments), 
+			    Fact_Border_Shipments[TotalTransitHours] > (Fact_Border_Shipments[TargetTransitHours] + 0.5)
+			)
+			
+			// Count of shipments that exceeded the target transit time plus the 30-minute buffer — i.e., shipments that failed the OTD threshold.
+			```
+		formatString: 0
+		lineageTag: 63964db0-18d8-4d3f-ab3b-8a95b6199554
+
+	measure 'Border Delay Rate %' =
+			
+			DIVIDE(
+			    AVERAGE(Fact_Border_Shipments[BorderDwellHours]),
+			    AVERAGE(Fact_Border_Shipments[TotalTransitHours]),
+			    0
+			)
+			
+			/* Proportion of total transit time attributable to border dwell. High values indicate customs/clearance is the primary bottleneck (particularly at Beitbridge Border Post). */
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7e0dee15-e4d7-4b0b-bf27-93441d7bd96d
+
+	partition 'Measures - Border' = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				  #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

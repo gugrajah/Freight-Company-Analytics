@@ -1,0 +1,13 @@
+expression 'DirectQuery to AS - demo_logistics' =
+		let
+		    Source = AnalysisServices.Database("powerbi://api.powerbi.com/v1.0/myorg/Logistics%20Co", "demo_logistics"),
+		    Cubes = Table.Combine(Source[Data]),
+		    Cube = Cubes{[Id="Model", Kind="Cube"]}[Data]
+		in
+		    Cube
+	lineageTag: 51545e93-04d0-4a65-b491-774aa0a66235
+
+	annotation PBI_IncludeFutureArtifacts = True
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"ce6aa593-e8c3-48f4-aa60-1ee7efeeebb8"}},"objectType":"Table"}]
+

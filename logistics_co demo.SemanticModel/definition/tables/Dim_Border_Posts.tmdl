@@ -1,0 +1,47 @@
+table Dim_Border_Posts
+	lineageTag: 9f2ba193-725b-49e7-aff8-e1b95b9276d0
+	sourceLineageTag: df7eaf01-0ffb-4b69-80c6-4ef5ed52c547
+
+	column BorderPostSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 685a85fc-a071-44a5-bc93-ec7fc09df03d
+		sourceLineageTag: 8b2cacf9-63e6-47a2-8186-4b41b4938b48
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: BorderPostSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column BorderPostName
+		dataType: string
+		lineageTag: f1dd8733-7a40-4a6e-aea5-81dee764323a
+		sourceLineageTag: d8f68fe3-e76d-4f48-adaa-b1af38d5f173
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: BorderPostName
+
+		annotation SummarizationSetBy = User
+
+	column NeighboringCountry
+		dataType: string
+		lineageTag: b535e979-8f58-4423-967b-f64ed0c0b547
+		sourceLineageTag: 9f66f2b2-aeef-43de-8e05-91f34ed5c9c3
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: NeighboringCountry
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Border_Posts = entity
+		mode: directQuery
+		source
+			entityName: Dim_Border_Posts
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

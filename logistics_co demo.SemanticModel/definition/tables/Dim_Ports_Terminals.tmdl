@@ -1,0 +1,57 @@
+table Dim_Ports_Terminals
+	lineageTag: 1beede09-ce7a-4539-948c-340f6f94b755
+	sourceLineageTag: 9a9fc55c-16f1-4745-8619-28779836d0ed
+
+	column TerminalSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 676eddad-8c66-444c-a460-98eeb3008424
+		sourceLineageTag: a76ed235-d58c-46bb-b70f-0897e2d2943c
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: TerminalSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column PortName
+		dataType: string
+		lineageTag: af93ead1-fa90-4e11-b415-311f18226053
+		sourceLineageTag: 15c5c83e-69b0-49c8-8099-da3fc1a71151
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: PortName
+
+		annotation SummarizationSetBy = User
+
+	column TerminalName
+		dataType: string
+		lineageTag: 56b7faf3-f7e1-454b-99c0-e77668cca484
+		sourceLineageTag: 511c8e07-ebbf-46c5-8ef5-627887b8a2d6
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: TerminalName
+
+		annotation SummarizationSetBy = User
+
+	column Country
+		dataType: string
+		lineageTag: a5e7e41c-cf40-49c5-a667-7e1d62dbcfd0
+		sourceLineageTag: 2052d35c-d7cc-4f9d-bec1-c5bfbdc793b8
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Ports_Terminals = entity
+		mode: directQuery
+		source
+			entityName: Dim_Ports_Terminals
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

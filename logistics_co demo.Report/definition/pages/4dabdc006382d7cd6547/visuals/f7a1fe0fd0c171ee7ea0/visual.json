@@ -1,0 +1,207 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "f7a1fe0fd0c171ee7ea0",
+  "position": {
+    "x": 667.86059369106363,
+    "y": 445.2403957940424,
+    "z": 7,
+    "height": 248.81080941431782,
+    "width": 583.33634743069729,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Containers"
+                    }
+                  },
+                  "Property": "ContainerNumber"
+                }
+              },
+              "queryRef": "Dim_Containers.ContainerNumber",
+              "nativeQueryRef": "ContainerNumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Containers"
+                    }
+                  },
+                  "Property": "ContainerType"
+                }
+              },
+              "queryRef": "Dim_Containers.ContainerType",
+              "nativeQueryRef": "ContainerType"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Ports_Terminals"
+                    }
+                  },
+                  "Property": "PortName"
+                }
+              },
+              "queryRef": "Dim_Ports_Terminals.PortName",
+              "nativeQueryRef": "PortName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Carriers"
+                    }
+                  },
+                  "Property": "CarrierName"
+                }
+              },
+              "queryRef": "Dim_Carriers.CarrierName",
+              "nativeQueryRef": "CarrierName"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Ocean_Shipments"
+                        }
+                      },
+                      "Property": "ActualDwellDays"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_Ocean_Shipments.ActualDwellDays)",
+              "nativeQueryRef": "Sum of ActualDwellDays"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Ocean_Shipments"
+                        }
+                      },
+                      "Property": "FreeDaysAllowed"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_Ocean_Shipments.FreeDaysAllowed)",
+              "nativeQueryRef": "Sum of FreeDaysAllowed"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures - Ocean"
+                    }
+                  },
+                  "Property": "Total Demurrage Cost"
+                }
+              },
+              "queryRef": "Measures - Ocean.Total Demurrage Cost",
+              "nativeQueryRef": "Total Demurrage Cost"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures - Ocean"
+                    }
+                  },
+                  "Property": "Total Detention Cost"
+                }
+              },
+              "queryRef": "Measures - Ocean.Total Detention Cost",
+              "nativeQueryRef": "Total Detention Cost"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Detailed Shipment/ Container Ledger'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

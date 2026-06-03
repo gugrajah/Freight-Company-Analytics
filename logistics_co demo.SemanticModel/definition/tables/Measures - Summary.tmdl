@@ -1,0 +1,107 @@
+table 'Measures - Summary'
+	lineageTag: 4cdd4193-dd5b-4bdd-bc6a-b4cbcdc6478d
+
+	measure 'Total Shipments (all modes)' =
+			
+			VAR SelectedModes = VALUES(Dim_Carriers[ModeOfTransport])
+			VAR OceanCount = IF("Ocean" IN SelectedModes, COUNTROWS(Fact_Ocean_Shipments), 0)
+			VAR AirCount = IF("Air" IN SelectedModes, COUNTROWS(Fact_Air_Shipments), 0)
+			VAR RoadCount = IF("Road" IN SelectedModes, COUNTROWS(Fact_Border_Shipments), 0)
+			RETURN
+			OceanCount + RoadCount + AirCount
+		formatString: #,0
+		lineageTag: 6db6315d-6f33-4236-b251-63cfe62caac4
+
+	measure 'Total Logistics Cost' =
+			
+			VAR SelectedModes = VALUES(Dim_Carriers[ModeOfTransport])
+			VAR OceanCost = IF("Ocean" IN SelectedModes, [Total D&D Cost], 0)
+			VAR AirCost = IF("Air" IN SelectedModes, [Total Air Cost], 0)
+			RETURN
+			    OceanCost + AirCost
+			
+			// Total logistics cost exposure across all modes — combines ocean D&D penalties with air freight procurement costs.
+		formatString: "R"#,0.00;-"R"#,0.00;"R"#,0.00
+		lineageTag: a975df91-34b1-46e7-8c7a-5e6e29c756c9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Total Logistics Revenue' = ```
+			
+			VAR SelectedModes = VALUES( Dim_Carriers[ModeOfTransport] )
+			VAR AirRevenue = IF( "Air" IN SelectedModes, [Total Air Revenue], 0 )
+			RETURN
+			    AirRevenue
+			// Total revenue from all revenue-bearing modes. Currently only Air Freight generates direct buy/sell revenue in the data model. 
+			// Oversight on my part. Too late to change the db
+			```
+		formatString: "R"#,0.00;-"R"#,0.00;"R"#,0.00
+		lineageTag: e6cf0a2f-4b2c-4939-9867-710170403466
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'Overall Gross Margin %' =
+			
+			DIVIDE(
+			    [Total Logistics Revenue] - [Total Logistics Cost],
+			    [Total Logistics Revenue],
+			    0
+			)
+			
+			// Overall gross margin percentage across the logistics operation (Air revenue minus all costs, divided by revenue).
+		formatString: 0.0%
+		lineageTag: 763d3369-0a69-47d5-ab04-7fbe687ec883
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Rolling 3-Month Demurrage' =
+			
+			CALCULATE(
+			    [Total Demurrage Cost],
+			    DATESINPERIOD(
+			        Dim_Dates[CalendarDate],
+			        MAX( Dim_Dates[CalendarDate] ),
+			        -3,
+			        MONTH
+			    ),
+			    USERELATIONSHIP(
+			        Fact_Ocean_Shipments[VesselArrivalDateKey],
+			        Dim_Dates[DateKey]
+			    )
+			)
+			
+			/* Rolling 3-month total demurrage cost. Uses DATESINPERIOD for a trailing-window calculation anchored to the last date in the current filter context. Smooths out monthly spikes and reveals trends. */
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 42abbd15-25c2-4cff-99c1-48da98b61281
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-ZA"}
+
+	measure 'YoY Demurrage Delta' = ```
+			
+			VAR CurrentPeriod = [Total Demurrage Cost]
+			VAR PriorYear = 
+			    CALCULATE(
+			        [Total Demurrage Cost],
+			        SAMEPERIODLASTYEAR(Dim_Dates[CalendarDate])
+			    )
+			RETURN
+			    CurrentPeriod - PriorYear
+			```
+		formatString: +"R"#,0.00;-"R"#,0.00
+		lineageTag: 8c44f1c5-1c52-4508-a20b-11c279ffd6bf
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	partition 'Measures - Summary' = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				  #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

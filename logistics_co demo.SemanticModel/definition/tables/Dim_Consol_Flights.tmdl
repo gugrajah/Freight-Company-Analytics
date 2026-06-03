@@ -1,0 +1,47 @@
+table Dim_Consol_Flights
+	lineageTag: df9f7902-217c-4ef5-a019-97dbb9ce59cf
+	sourceLineageTag: 159858eb-c263-4f23-b4b3-49585575e605
+
+	column FlightSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 2184c312-a932-40ce-a913-784cca5b6478
+		sourceLineageTag: ab9792df-2d6f-4663-ac70-de8719667a74
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: FlightSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column FlightNumber
+		dataType: string
+		lineageTag: 80ae209d-054d-4742-847d-447454b4b749
+		sourceLineageTag: 98ae2bd9-2358-4e18-94ed-37a7944ce329
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: FlightNumber
+
+		annotation SummarizationSetBy = User
+
+	column AirlinePrefix
+		dataType: string
+		lineageTag: 4f7839f9-ace9-48ef-a004-1ca11faf77c4
+		sourceLineageTag: b4e075e3-cf27-4495-bd01-e729ec9a4efd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: AirlinePrefix
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Consol_Flights = entity
+		mode: directQuery
+		source
+			entityName: Dim_Consol_Flights
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,156 @@
+table Fact_Ocean_Shipments
+	lineageTag: 31799277-5ac3-4548-9a88-583ef4e685b6
+	sourceLineageTag: 73668469-4b8a-4904-821a-dfa707bd5d3d
+
+	column OceanShipmentID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f1a1ed7-dc7b-496a-9055-d48a48d110bd
+		sourceLineageTag: 03634993-a776-4985-8fbb-30395e142fb1
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: OceanShipmentID
+
+		annotation SummarizationSetBy = User
+
+	column ContainerSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bb7a9aae-e8eb-4a3a-a8e8-6d59714227d4
+		sourceLineageTag: 1242d40d-55f6-425a-a7ab-dd14e7927b23
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: ContainerSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column CarrierSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c505180d-61eb-4338-8b40-e65c3e09b1e7
+		sourceLineageTag: 789c2703-a86b-456e-b917-027094b4fd66
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CarrierSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column TerminalSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 82993dfe-cfc5-4ad3-b5e7-228df55abaae
+		sourceLineageTag: 3354535c-d469-400a-90d4-35fe82930a8f
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: TerminalSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column VesselArrivalDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8971373f-4a8e-47da-a4fa-4590160597d5
+		sourceLineageTag: a288fc7e-e103-47da-badd-e4d7c33427eb
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: VesselArrivalDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column PortDischargeDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: ac20e8d3-9d6d-4be7-b432-cc7b6045b9cf
+		sourceLineageTag: 2cafce02-64bd-4b9e-a812-0b8c52d7862c
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: PortDischargeDateKey
+
+		annotation SummarizationSetBy = User
+
+	column GateOutDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 190780f3-d235-4b6d-b1db-d08d017dc05d
+		sourceLineageTag: 61ea0eef-abaf-4d1b-9959-2557c850a8ee
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: GateOutDateKey
+
+		annotation SummarizationSetBy = User
+
+	column EmptyReturnDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: bd4bdbd9-0fd1-48af-8241-39b2d42db1cf
+		sourceLineageTag: fabf3c85-9210-45d4-8f5b-11160f0fb34a
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: EmptyReturnDateKey
+
+		annotation SummarizationSetBy = User
+
+	column FreeDaysAllowed
+		dataType: int64
+		formatString: 0
+		lineageTag: 50d89f3b-227e-46af-9343-74defd807fd1
+		sourceLineageTag: 51229de2-52b4-42d3-87ea-70a802cc4545
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: FreeDaysAllowed
+
+		annotation SummarizationSetBy = User
+
+	column ActualDwellDays
+		dataType: int64
+		formatString: 0
+		lineageTag: c1c9fdaf-838f-4c68-afd4-dd942a3c176f
+		sourceLineageTag: 502a8aa4-a37b-4fc0-bc0a-05f1aff60dfc
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: ActualDwellDays
+
+		annotation SummarizationSetBy = User
+
+	column DemurrageCost
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 02c7bc3e-042f-4952-aba0-f418ceeadabf
+		sourceLineageTag: 25da8aea-bcda-4698-83da-ffc2de1010ac
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: DemurrageCost
+
+		annotation SummarizationSetBy = User
+
+	column DetentionCost
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 046ea2b3-50b3-4645-8b9a-8ef5bd04037c
+		sourceLineageTag: a851c111-0032-474f-a4ae-03fa009713f6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: DetentionCost
+
+		annotation SummarizationSetBy = User
+
+	partition Fact_Ocean_Shipments = entity
+		mode: directQuery
+		source
+			entityName: Fact_Ocean_Shipments
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

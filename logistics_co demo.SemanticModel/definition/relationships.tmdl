@@ -1,0 +1,73 @@
+relationship c6cb9b8e-9b4d-4df0-8c49-c817607c1bfb
+	fromColumn: Fact_Border_Shipments.BorderPostSK
+	toColumn: Dim_Border_Posts.BorderPostSK
+
+relationship 8a12b49d-7a08-4257-859f-a07e954fc357
+	fromColumn: Fact_Border_Shipments.VehicleSK
+	toColumn: Dim_Vehicles.VehicleSK
+
+relationship 81f7f80b-fde3-4941-8f0e-6545de7e4263
+	fromColumn: Fact_Border_Shipments.RouteSK
+	toColumn: Dim_Routes_Corridors.RouteSK
+
+relationship 75cef23f-afd5-495f-a05d-d26b2738eb22
+	isActive: false
+	fromColumn: Fact_Border_Shipments.ScheduledArrivalDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship 5ae2b020-1a04-4628-b864-a213590ff8ad
+	isActive: false
+	fromColumn: Fact_Border_Shipments.ActualArrivalDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship 86a82809-a55c-4099-8466-9725265d6db2
+	fromColumn: Fact_Border_Shipments.DispatchDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship 3e929a71-1164-4117-adc0-ed80522fa12b
+	fromColumn: Fact_Air_Shipments.CustomerSK
+	toColumn: Dim_Customers.CustomerSK
+
+relationship 7e3ebed1-d22c-4a47-9add-7cec84690156
+	fromColumn: Fact_Air_Shipments.FlightSK
+	toColumn: Dim_Consol_Flights.FlightSK
+
+relationship c4ac2231-86ca-46ca-96f1-11fb38686746
+	fromColumn: Fact_Air_Shipments.BookingDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship 3afea2e2-5d74-4362-a11d-18ec47fd7ca5
+	fromColumn: Fact_Air_Shipments.AirportSK
+	toColumn: Dim_Airports.AirportSK
+
+relationship 4a190eaf-a4d9-43d5-acd3-4020a7e3065d
+	fromColumn: Fact_Ocean_Shipments.ContainerSK
+	toColumn: Dim_Containers.ContainerSK
+
+relationship 25ea4f6e-44d0-4925-a751-51e7ffdc6ee5
+	fromColumn: Fact_Ocean_Shipments.CarrierSK
+	toColumn: Dim_Carriers.CarrierSK
+
+relationship b4c4ef36-5502-4e8d-931b-d866b9a0eece
+	fromColumn: Fact_Ocean_Shipments.TerminalSK
+	toColumn: Dim_Ports_Terminals.TerminalSK
+
+relationship e20f1295-1ca0-47ff-8011-71bb88ecc566
+	fromColumn: Fact_Ocean_Shipments.VesselArrivalDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship 54a75882-f1a7-4316-8c9e-d43c2ed7dea9
+	isActive: false
+	fromColumn: Fact_Ocean_Shipments.PortDischargeDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship ded9a73a-2f84-41f5-aef7-4b886d12a931
+	isActive: false
+	fromColumn: Fact_Ocean_Shipments.GateOutDateKey
+	toColumn: Dim_Dates.DateKey
+
+relationship b69bdfc8-1490-4872-a6b9-beac7353c886
+	isActive: false
+	fromColumn: Fact_Ocean_Shipments.EmptyReturnDateKey
+	toColumn: Dim_Dates.DateKey
+

@@ -1,0 +1,123 @@
+table Fact_Air_Shipments
+	lineageTag: f5111587-af26-46dc-a34c-77c33daa3829
+	sourceLineageTag: 4f8e67a5-d21a-472c-938b-e9f9d8b6068d
+
+	column AirShipmentID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a5e5d39-34ac-4b09-b549-76abe5916b65
+		sourceLineageTag: 8ff3a732-6b97-4d1f-b954-8b0a3a0f6810
+		dataCategory: Uncategorized
+		summarizeBy: count
+		sourceColumn: AirShipmentID
+
+		annotation SummarizationSetBy = User
+
+	column AirportSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7b1c9d07-b55b-420c-9177-091d945737fb
+		sourceLineageTag: 019cb285-24fd-4a8b-98ac-180f2e1114d6
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: AirportSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column CustomerSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 88ff3656-daad-400d-bb8e-829ccad4146f
+		sourceLineageTag: 4fafc2e5-4115-40be-a5c0-4048fccd4fcf
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: CustomerSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column FlightSK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5ed1eb3c-8cf9-4d0d-b5ef-8ed204a78d71
+		sourceLineageTag: 3aaedfd8-053e-4652-80e8-58d8abd73c33
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: FlightSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column BookingDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ecc79b1c-6bc1-4fe2-91c9-772bd5d5ec24
+		sourceLineageTag: c53df1db-e9cb-494d-a992-4dafb2c2ecd0
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: BookingDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column ActualWeightKG
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 764a4d1d-d3ec-4e7d-a146-a831f2f7c0cb
+		sourceLineageTag: ea403a0e-6451-48b4-bfc6-2f0314f430d5
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: ActualWeightKG
+
+		annotation SummarizationSetBy = User
+
+	column VolumeCBM
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 68e4590f-8c41-4100-ab59-395310c70a6f
+		sourceLineageTag: 233b2612-e572-4d68-97f9-60448ed5a045
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: VolumeCBM
+
+		annotation SummarizationSetBy = User
+
+	column AirlineBuyRatePerKG
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: a7ec92b7-2801-4c60-b381-2612f2b8fc7e
+		sourceLineageTag: 0d0177ef-f719-40f9-8698-bee4142bf0e6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: AirlineBuyRatePerKG
+
+		annotation SummarizationSetBy = User
+
+	column ClientSellRatePerKG
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 8b199d98-8816-4647-a37c-78e956afe009
+		sourceLineageTag: 5e274ffd-6a4e-489d-b7c0-3a5dcfe6ce87
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: ClientSellRatePerKG
+
+		annotation SummarizationSetBy = User
+
+	partition Fact_Air_Shipments = entity
+		mode: directQuery
+		source
+			entityName: Fact_Air_Shipments
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

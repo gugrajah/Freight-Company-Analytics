@@ -1,0 +1,47 @@
+table Dim_Vehicles
+	lineageTag: 0cc49de8-b60b-40df-990f-3e4f35a19cef
+	sourceLineageTag: bdddabe4-c813-4ac6-9a18-8582ee163fc0
+
+	column VehicleSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 50352dca-0404-4d01-b6df-458b5cabde21
+		sourceLineageTag: f5d4ddda-f736-45df-b955-9583c575474f
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: VehicleSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column FleetID
+		dataType: string
+		lineageTag: 713b4844-0910-447c-944b-a9dbccf11882
+		sourceLineageTag: ad7cb940-b4d5-443f-986f-8b4185a1c386
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: FleetID
+
+		annotation SummarizationSetBy = User
+
+	column VehicleType
+		dataType: string
+		lineageTag: 2cd0c9e0-92d4-4f01-ad28-c09dc0813c0d
+		sourceLineageTag: d3edeecf-af66-40a3-aae6-a68b0c34acbc
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: VehicleType
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Vehicles = entity
+		mode: directQuery
+		source
+			entityName: Dim_Vehicles
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

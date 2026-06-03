@@ -1,0 +1,58 @@
+table Dim_Routes_Corridors
+	lineageTag: 21756daf-78b2-41ea-9ab6-10316ea0908d
+	sourceLineageTag: 1b79a1f8-84c4-46b9-9ddf-902eb767d678
+
+	column RouteSK
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		lineageTag: 4ee46b97-00bd-430a-a954-7dd40971342f
+		sourceLineageTag: b6449725-5462-4c1c-8b46-760298e115c9
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: RouteSK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column OriginLocation
+		dataType: string
+		lineageTag: 3acc7c5c-1bfb-4304-8c3b-8278b4e21ca8
+		sourceLineageTag: 362d0f2f-e178-4ee3-b51d-fe956b7f3425
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: OriginLocation
+
+		annotation SummarizationSetBy = User
+
+	column DestinationLocation
+		dataType: string
+		lineageTag: 15e50f5b-a3e4-4e8d-8ee7-433a1c2f1bef
+		sourceLineageTag: 66e44d18-8cce-48ff-9200-84fa11be6c6e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: DestinationLocation
+
+		annotation SummarizationSetBy = User
+
+	column DistanceKM
+		dataType: decimal
+		formatString: "R"#,0.###############;-"R"#,0.###############;"R"#,0.###############
+		lineageTag: 81c3c1ba-7ec1-459a-a6a7-fc4130e30eb6
+		sourceLineageTag: 21e02b03-bd3b-4baa-9539-dabd54e5ac07
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: DistanceKM
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Routes_Corridors = entity
+		mode: directQuery
+		source
+			entityName: Dim_Routes_Corridors
+			expressionSource: 'DirectQuery to AS - demo_logistics'
+
+	annotation PBI_ResultType = Exception
+

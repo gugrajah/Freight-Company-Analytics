@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-ZA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DirectQuery to AS - demo_logistics","Measures - Ocean","Measures - Air","Measures - Border","Measures - Summary"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Dim_Carriers
+ref table Fact_Border_Shipments
+ref table Dim_Consol_Flights
+ref table Dim_Customers
+ref table Fact_Air_Shipments
+ref table Dim_Containers
+ref table Dim_Dates
+ref table Dim_Ports_Terminals
+ref table Fact_Ocean_Shipments
+ref table Dim_Airports
+ref table Dim_Vehicles
+ref table Dim_Routes_Corridors
+ref table Dim_Border_Posts
+ref table 'Measures - Ocean'
+ref table 'Measures - Air'
+ref table 'Measures - Border'
+ref table 'Measures - Summary'
+
+ref cultureInfo en-US
+

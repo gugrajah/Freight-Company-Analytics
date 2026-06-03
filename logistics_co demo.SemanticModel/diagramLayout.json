@@ -1,0 +1,242 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 727.46742156154448,
+            "y": -50
+          },
+          "nodeIndex": "Dim_Airports",
+          "nodeLineageTag": "9cbf80a7-c1ce-450f-855d-2f84554ae1d5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 866.77726613959453,
+            "y": 1134.6560370326476
+          },
+          "nodeIndex": "Dim_Border_Posts",
+          "nodeLineageTag": "df7eaf01-0ffb-4b69-80c6-4ef5ed52c547",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 90.4778863782185,
+            "y": 1132.9874510778257
+          },
+          "nodeIndex": "Dim_Carriers",
+          "nodeLineageTag": "8156db24-0832-45ee-acaa-c5d5d0f60e2f",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 898.26170094921463,
+            "y": 177.91678085040076
+          },
+          "nodeIndex": "Dim_Consol_Flights",
+          "nodeLineageTag": "159858eb-c263-4f23-b4b3-49585575e605",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 865.8885255657292
+          },
+          "nodeIndex": "Dim_Containers",
+          "nodeLineageTag": "4e52f9d5-c34a-45fb-b250-1112f8b17459",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 441.0180092198035,
+            "y": -23.970795243248403
+          },
+          "nodeIndex": "Dim_Customers",
+          "nodeLineageTag": "3653869c-1c40-46d9-a6a0-bd25d19b7956",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 439.20828041160757,
+            "y": 528.45175276087775
+          },
+          "nodeIndex": "Dim_Dates",
+          "nodeLineageTag": "ee063cb6-70b7-4298-80ba-7587ee7f31e6",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50.088387325961094,
+            "y": 572.94616863119541
+          },
+          "nodeIndex": "Dim_Ports_Terminals",
+          "nodeLineageTag": "9a9fc55c-16f1-4745-8619-28779836d0ed",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 959.5200411776309,
+            "y": 873.677879359389
+          },
+          "nodeIndex": "Dim_Routes_Corridors",
+          "nodeLineageTag": "1b79a1f8-84c4-46b9-9ddf-902eb767d678",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 579.72870309424752,
+            "y": 1189.9673122613858
+          },
+          "nodeIndex": "Dim_Vehicles",
+          "nodeLineageTag": "bdddabe4-c813-4ac6-9a18-8582ee163fc0",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 593.5098583706897,
+            "y": 179.10847494708491
+          },
+          "nodeIndex": "Fact_Air_Shipments",
+          "nodeLineageTag": "4f8e67a5-d21a-472c-938b-e9f9d8b6068d",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 672.41685466192348,
+            "y": 781.663311404287
+          },
+          "nodeIndex": "Fact_Border_Shipments",
+          "nodeLineageTag": "6bb806e7-7ea8-41e0-b277-0f89b75921ee",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.12989070960975,
+            "y": 780.0317263449549
+          },
+          "nodeIndex": "Fact_Ocean_Shipments",
+          "nodeLineageTag": "73668469-4b8a-4904-821a-dfa707bd5d3d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1661.5200411776309,
+            "y": 643.98365613069291
+          },
+          "nodeIndex": "Measures - Air",
+          "nodeLineageTag": "3e9e0886-b975-4e70-8b7b-d5487f4abcf5",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1427.5200411776309,
+            "y": 643.98365613069291
+          },
+          "nodeIndex": "Measures - Ocean",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1895.5200411776309,
+            "y": 643.98365613069291
+          },
+          "nodeIndex": "Measures - Border",
+          "nodeLineageTag": "e8dfd5bf-32be-47c7-8f68-c5ffd1dd13fa",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2129.5200411776309,
+            "y": 643.98365613069291
+          },
+          "nodeIndex": "Measures - Summary",
+          "nodeLineageTag": "4cdd4193-dd5b-4bdd-bc6a-b4cbcdc6478d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 40.483460665402433,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
