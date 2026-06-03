@@ -1,0 +1,109 @@
+{
+    "name": "Rhenus Logistics Premium Theme",
+    "dataColors": [
+        "#002F6C",
+        "#007ACC",
+        "#10B981",
+        "#EF4444",
+        "#F59E0B",
+        "#6B7280",
+        "#8B5CF6",
+        "#EC4899"
+    ],
+    "background": "#F8FAFC",
+    "foreground": "#002F6C",
+    "tableAccent": "#007ACC",
+    "textClasses": {
+        "callout": {
+            "fontSize": 24,
+            "fontFace": "Segoe UI Semibold",
+            "color": "#002F6C"
+        },
+        "title": {
+            "fontSize": 12,
+            "fontFace": "Segoe UI Semibold",
+            "color": "#002F6C"
+        },
+        "header": {
+            "fontSize": 11,
+            "fontFace": "Segoe UI Semibold",
+            "color": "#002F6C"
+        },
+        "label": {
+            "fontSize": 9,
+            "fontFace": "Segoe UI",
+            "color": "#6B7280"
+        }
+    },
+    "visualStyles": {
+        "*": {
+            "*": {
+                "background": [
+                    {
+                        "show": true,
+                        "color": {
+                            "solid": {
+                                "color": "#FFFFFF"
+                            }
+                        },
+                        "transparency": 0
+                    }
+                ],
+                "border": [
+                    {
+                        "show": true,
+                        "color": {
+                            "solid": {
+                                "color": "#E2E8F0"
+                            }
+                        },
+                        "width": 1
+                    }
+                ],
+                "dropShadow": [
+                    {
+                        "show": true,
+                        "position": "Outer",
+                        "preset": "Custom",
+                        "shadowColor": {
+                            "solid": {
+                                "color": "#000000"
+                            }
+                        },
+                        "transparency": 95,
+                        "blur": 8,
+                        "angle": 135,
+                        "distance": 2
+                    }
+                ]
+            }
+        },
+        "card": {
+            "*": {
+                "labels": [
+                    {
+                        "show": true,
+                        "color": {
+                            "solid": {
+                                "color": "#6B7280"
+                            }
+                        },
+                        "fontSize": 9,
+                        "fontFamily": "Segoe UI"
+                    }
+                ],
+                "cardDataLabels": [
+                    {
+                        "color": {
+                            "solid": {
+                                "color": "#002F6C"
+                            }
+                        },
+                        "fontSize": 22,
+                        "fontFamily": "Segoe UI Semibold"
+                    }
+                ]
+            }
+        }
+    }
+}
