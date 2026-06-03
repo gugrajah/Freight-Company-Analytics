@@ -1,4 +1,4 @@
-# Rhenus Air & Ocean (SA Division) Multi-Modal Supply Chain Performance Dashboard
+# Fictitious (Air, Road, Ocean) Multi-Modal Supply Chain Performance Dashboard
 
 An executive-grade, multi-modal supply chain analytics portfolio project designed to demonstrate advanced Power BI engineering, Star Schema dimensional modeling, T-SQL data warehousing pipelines, and complex DAX business logic. The project is tailored to the operations, regions, and logistics bottlenecks of a global third-party logistics (3PL) and freight forwarding provider operating out of South Africa.
 
